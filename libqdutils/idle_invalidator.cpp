@@ -123,7 +123,7 @@ bool IdleInvalidator::threadLoop() {
         if (pFd.revents & POLLPRI) {
             char data[64];
             // Consume the node by reading it
-            ssize_t len = pread(pFd.fd, data, 64, 0);
+            size_t len = pread(pFd.fd, data, 64, 0);
             ALOGD_IF(II_DEBUG, "IdleInvalidator::%s Idle Timeout fired len %zd",
                 __FUNCTION__, len);
             mHandler((void*)mHwcContext);
